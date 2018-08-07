@@ -1,13 +1,33 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-const TeamInfo =  (props) => {
-    return (
-        <div>
-            {
-                console.log(props)
-            }
-        </div>
-    )
+class TeamInfo extends Component {
+
+    componentDidMount() {
+        this.props.getTeamInfo(this.props.match.params.id);
+    }
+    render() {
+        return (
+            <div>
+                {
+                    console.log(props)
+                }
+            </div>
+        )
+    }
 }
 
-export default TeamInfo;
+const mapStateToProps = (state) => {
+    return {
+        data: state.teamInfo.team
+    }
+};
+const mapDisPatchToProps = (dispatch) => {
+    return {
+        getTeamInfo(id) {
+            const action = getTeam(id);
+            dispatch(action);
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDisPatchToProps)(TeamInfo);

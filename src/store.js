@@ -3,10 +3,11 @@ import thunk from 'redux-thunk';
 import team from './components/Teams/redux/reducer';
 import student from './components/Students/redux/reducer';
 import studentInfo from './components/StudentInfo/reducer';
+import teamInfo from './components/TeamInfo/reducer';
 
 const store = createStore(
     combineReducers(
-        {team, student, studentInfo}
+        {team, student, studentInfo, teamInfo}
     ),
     compose(
         applyMiddleware(thunk),
