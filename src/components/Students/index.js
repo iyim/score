@@ -2,7 +2,8 @@ import React, {Component} from "react";
 import {Table, Button, Modal} from 'antd';
 import {connect} from 'react-redux';
 import './index.css';
-import {getInitStudents} from "./redux/actionCreators";
+import {getInitStudents, addStudentAction} from "./redux/actionCreators";
+import AddStudentForm from '../AddStudentForm/index';
 
 class StudentsList extends Component {
 
@@ -10,6 +11,7 @@ class StudentsList extends Component {
         super(props);
         this.state = {
             sortedInfo: null,
+            visible:false
         };
     }
 
@@ -39,6 +41,28 @@ class StudentsList extends Component {
         this.props.getStudentList();
     }
 
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+
+    }
+
+    handleOk = (e) => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    }
+
+    handleCancel = (e) => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+
+    }
+
     render() {
         console.log("render");
         let {sortedInfo} = this.state;
@@ -65,7 +89,7 @@ class StudentsList extends Component {
                 <div className="table-operations">
                     <Button onClick={this.setAgeSort}>排序</Button>
                     <Button onClick={this.clearAll}>清除排序</Button>
-                    <Button type="primary" style={{float: "right"}}>添加学生</Button>
+                    <Button onClick={this.showModal} type="primary" style={{float: "right"}}>添加学生</Button>
                 </div>
                 <Table
                     columns={columns}
@@ -82,6 +106,16 @@ class StudentsList extends Component {
                         }
                     }
                 />
+
+                <Modal
+                    title="添加学生"
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    footer={null}
+                >
+                    <AddStudentForm offModal={this.handleOk} addStudent={this.props.addStudent}/>
+                </Modal>
 
 
             </div>
@@ -102,6 +136,10 @@ const mapDisPatchToProps = (dispatch) => {
         getStudentList() {
             console.log("getStudentList");
             const action = getInitStudents();
+            dispatch(action);
+        },
+        addStudent(value){
+            const action = addStudentAction(value);
             dispatch(action);
         }
     }

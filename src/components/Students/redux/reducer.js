@@ -10,6 +10,10 @@ export default (state = initState, action) => {
             const newState = JSON.parse(JSON.stringify(state));
             newState.students = action.data;
             return newState;
+        case studentAction.ADD_STUDENT:
+            const newState1 = JSON.parse(JSON.stringify(state));
+            newState1.students.push(action.data);
+            return newState1;
         default:
             return state;
     }
