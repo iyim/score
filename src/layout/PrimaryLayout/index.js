@@ -1,8 +1,8 @@
 import React from 'react';
 import {Layout, Menu, Icon} from 'antd';
 import {NavLink, Route, Switch, Redirect} from 'react-router-dom';
-import TeamList from '../../components/Teams/index';
-import StudentsList from '../../components/Students/index';
+import TeamRouter from '../LayoutRouter/teamRouter';
+import StudentRouter from '../LayoutRouter/studentRouter';
 
 import './index.css';
 
@@ -57,9 +57,9 @@ class AppLayout extends React.Component {
                     </Header>
                     <Content style={{margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280}}>
                         <Switch>
-                            <Route path={`${match.path}`} exact component={TeamList}/>
-                            <Route path={`${match.path}/teams`} component={TeamList}/>
-                            <Route path={`${match.path}/students`} component={StudentsList} />
+                            <Route path={`${match.path}`} exact component={TeamRouter}/>
+                            <Route path={`${match.path}/teams`} component={TeamRouter}/>
+                            <Route path={`${match.path}/students`} component={StudentRouter} />
                             <Redirect to={`${match.url}`}/>
                         </Switch>
                     </Content>

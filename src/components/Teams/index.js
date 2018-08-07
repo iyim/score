@@ -135,7 +135,21 @@ class TeamsList extends Component {
                     <Button onClick={this.clearAll}>清除排序</Button>
                     <Button onClick={this.showModal} type="primary" style={{float: "right"}}>添加队伍</Button>
                 </div>
-                <Table columns={columns} dataSource={this.props.data} onChange={this.handleChange}/>
+                <Table
+                    columns={columns}
+                    dataSource={this.props.data}
+                    onChange={this.handleChange}
+                    onRow={
+                        (record) => {
+                            return{
+                                onClick: ()=>{
+                                    console.log(record.key);
+                                    this.props.history.push(`/score/teams/${record.key}`)
+                                }
+                            }
+                        }
+                    }
+                />
                 <Modal
                     title="添加队伍"
                     visible={this.state.teamModalVisible}

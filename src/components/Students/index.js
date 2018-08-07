@@ -67,7 +67,21 @@ class StudentsList extends Component {
                     <Button onClick={this.clearAll}>清除排序</Button>
                     <Button type="primary" style={{float: "right"}}>添加学生</Button>
                 </div>
-                <Table columns={columns} dataSource={this.props.data} onChange={this.handleChange}/>
+                <Table
+                    columns={columns}
+                    dataSource={this.props.data}
+                    onChange={this.handleChange}
+                    onRow={
+                        (record) => {
+                            return{
+                                onClick: ()=>{
+                                    console.log(record.key);
+                                    this.props.history.push(`/score/students/${record.key}`)
+                                }
+                            }
+                        }
+                    }
+                />
 
 
             </div>
