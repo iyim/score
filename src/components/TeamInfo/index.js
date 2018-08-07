@@ -3,7 +3,9 @@ import React, {Component} from 'react';
 const TeamInfo =  (props) => {
     return (
         <div>
-            我是信息
+            {
+                console.log(props)
+            }
         </div>
     )
 }
