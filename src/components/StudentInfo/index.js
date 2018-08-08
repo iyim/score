@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {getStudent} from './actionCreator';
+import {Card} from 'antd';
 
 
 class StudentInfo extends Component {
@@ -12,7 +13,11 @@ class StudentInfo extends Component {
     render() {
         return (
             <div>
-                {JSON.stringify(this.props.data)}
+                <Card title={this.props.data.name} bordered={false}>
+                    <p>姓名：{this.props.data.name}</p>
+                    <p>年龄：{this.props.data.age}</p>
+                    <p>所在队伍：{this.props.data.team}</p>
+                </Card>
             </div>
         )
     }

@@ -1,7 +1,8 @@
 import * as teamAction from './action-type';
 
 const initState = {
-    team: {}
+    team: {},
+    students: []
 }
 
 export default (state = initState, action) => {
@@ -11,6 +12,11 @@ export default (state = initState, action) => {
             newState.team = action.data;
             console.log(newState);
             return newState;
+        case teamAction.TEAM_STUDENTS:
+            const newState1 = JSON.parse(JSON.stringify(state));
+            newState1.students = action.data;
+            console.log(newState1);
+            return newState1;
         default:
             return state;
     }

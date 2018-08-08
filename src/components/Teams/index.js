@@ -48,7 +48,8 @@ class TeamsList extends Component {
         });
     }
 
-    showModal = () => {
+    showModal = (e) => {
+        console.log(e);
         this.setState({
             teamModalVisible: true,
         });
@@ -142,9 +143,12 @@ class TeamsList extends Component {
                     onRow={
                         (record) => {
                             return{
-                                onClick: ()=>{
-                                    console.log(record.key);
-                                    this.props.history.push(`/score/teams/${record.key}`)
+                                onClick: (e)=>{
+                                    e.preventDefault();
+                                    console.log(e.target);
+                                    if (!(e.target.localName === 'button')){
+                                        this.props.history.push(`/score/teams/${record.key}`)
+                                    }
                                 }
                             }
                         }

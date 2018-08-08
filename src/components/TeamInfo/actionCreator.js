@@ -13,3 +13,15 @@ export const getTeam = (id) => {
         })
     }
 }
+
+export const getTeamStudent = (id) => {
+    return (dispatch) => {
+        axios.get(`/score/teams/${id}/members`).then(res => {
+            console.log(res.data.data);
+            dispatch({
+                type: action.TEAM_STUDENTS,
+                data: res.data.data
+            })
+        })
+    }
+}

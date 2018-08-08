@@ -5,6 +5,8 @@ import './index.css';
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
+
+
     handleSubmit = (e) => {
         e.preventDefault();
 
@@ -13,6 +15,7 @@ class NormalLoginForm extends React.Component {
                 console.log('Received values of form: ', values);
                 this.props.offModal();
                 this.props.addScore(values);
+                console.log(values);
             }
         });
     }

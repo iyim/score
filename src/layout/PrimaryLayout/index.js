@@ -37,11 +37,11 @@ class AppLayout extends React.Component {
                         defaultSelectedKeys={['teams']}
                     >
                         <Menu.Item key="teams">
-                            <Icon type="user"/>
+                            {/*<Icon type="user"/>*/}
                             <NavLink to='/score/teams' className="link">队伍</NavLink>
                         </Menu.Item>
                         <Menu.Item key="students">
-                            <Icon type="video-camera"/>
+                            {/*<Icon type="video-camera"/>*/}
                             <NavLink to='/score/students'>学生</NavLink>
                         </Menu.Item>
 
